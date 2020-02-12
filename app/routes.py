@@ -9,6 +9,9 @@ from app.blog_helpers import render_markdown
 import flask
 import os 
 
+
+app.secret_key = b'M\xb6NP!YC\x19\x14\xc9\xf09\xab\x1az\x08'
+
 #global import (try to avoid)
 #from flask import *
 

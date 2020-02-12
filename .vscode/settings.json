@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "c:\\Users\\njl27\\Desktop\\bin\\Flaskblogv1\\flaskblogv2\\venv\\Scripts\\python.exe"
+    "python.pythonPath": "c:\\Users\\njl27\\Desktop\\bin\\flaskblogv2\\venv\\Scripts\\python.exe",
+    "python.linting.enabled": false
 }
