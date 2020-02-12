@@ -7,6 +7,7 @@ from app.blog_helpers import render_markdown
 
 #safe global import (okay to use)
 import flask
+import os 
 
 #global import (try to avoid)
 #from flask import *
@@ -20,13 +21,9 @@ def home():
 def all():
     #TODO: figure out how to find all files 
     #in the app
+    
     view_data = {}
-    view_data["pages"] = ([ #parens allows for multi
-                            #line statements in Py
-        'about.html',
-        'test.html',
-        'foo.html'
-    ])
+    view_data["pages"] = os.listdir(r"C:\Users\njl27\Desktop\bin\Flaskblogv1\flaskblogv2\app\templates")
     return render_template("all.html", data = view_data)
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -36,7 +33,8 @@ def login():
         
         #TODO: process request.values as necessary
         session['user_name'] = request.values['user_name']
-    return ""
+    return render_template("login.html")
+
 
 @app.route("/favicon.ico")
 def favicon():
@@ -51,6 +49,11 @@ def click_tracker():
         view_data["click_count"] = int(view_data["click_count"]) + 1
     return render_template('click_tracker.html', data=view_data)
     
+@app.route("/edit/<page_name>", methods=['GET', 'POST'])
+def edit_page(page_name):
+    view_data = {}
+    view_data["page_name"] = page_name
+    return render_template("edit.html", data = view_data)
 
 #generic page
 @app.route("/<view_name>")
